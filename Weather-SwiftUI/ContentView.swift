@@ -11,10 +11,17 @@ struct ContentView: View {
     
     @State private var isDarkMode: Bool = false
     
+    let days: [Day] = [
+        Day(name: "MON", imageName: "cloud.sun.fill", temperature: 26),
+        Day(name: "TUE", imageName: "sun.haze.fill", temperature: 96),
+        Day(name: "WED", imageName: "snow", temperature: 86),
+        Day(name: "THUR", imageName: "sunset.fill", temperature: 46),
+        Day(name: "FRI", imageName: "cloud.bolt.rain.fill", temperature: 56)
+    ]
+    
     var body: some View {
         ZStack {
-            BackgroundView(startColor: isDarkMode ? .black :  .blue,
-                           endColor: isDarkMode ? .gray : Color("lightBlue"))
+            BackgroundView(isDarkMode: $isDarkMode)
             
             VStack {
                 Text("Cupertino, CA")
@@ -25,26 +32,14 @@ struct ContentView: View {
                     .padding()
                 
                 
-                VStack {
-                    Image(systemName: "cloud.sun.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 180,height: 180)
-                        .symbolRenderingMode(.multicolor)
-                    
-                    Text("76°")
-                        .foregroundStyle(.white)
-                        .font(.system(size: 70, weight: .medium))
-                }
+               CityStatsView(isDarkMode: isDarkMode)
                 
                 Spacer()
                 
                 HStack(spacing: 32) {
-                    WeatherStatsView(imageName: "cloud.sun.fill", temperature: 76, dayOfWeek: "MON")
-                    WeatherStatsView(imageName: "sun.haze.fill", temperature: 76, dayOfWeek: "TUE")
-                    WeatherStatsView(imageName: "snow", temperature: 76, dayOfWeek: "WED")
-                    WeatherStatsView(imageName: "sunset.fill", temperature: 76, dayOfWeek: "THUR")
-                    WeatherStatsView(imageName: "cloud.bolt.rain.fill", temperature: 76, dayOfWeek: "FRI")
+                    ForEach(days) { day in
+                        WeatherStatsView(day: day)
+                    }
                 }
                 
                 Spacer()
