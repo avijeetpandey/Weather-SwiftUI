@@ -37,10 +37,10 @@ struct ContentView: View {
                 
                 HStack(spacing: 32) {
                     WeatherStatsView(imageName: "cloud.sun.fill", temperature: 76, dayOfWeek: "MON")
-                    WeatherStatsView(imageName: "sun.haze.fill", temperature: 76, dayOfWeek: "MON")
-                    WeatherStatsView(imageName: "snow", temperature: 76, dayOfWeek: "MON")
-                    WeatherStatsView(imageName: "sunset.fill", temperature: 76, dayOfWeek: "MON")
-                    WeatherStatsView(imageName: "cloud.bolt.rain.fill", temperature: 76, dayOfWeek: "MON")
+                    WeatherStatsView(imageName: "sun.haze.fill", temperature: 76, dayOfWeek: "TUE")
+                    WeatherStatsView(imageName: "snow", temperature: 76, dayOfWeek: "WED")
+                    WeatherStatsView(imageName: "sunset.fill", temperature: 76, dayOfWeek: "THUR")
+                    WeatherStatsView(imageName: "cloud.bolt.rain.fill", temperature: 76, dayOfWeek: "FRI")
                 }
                 
                 Spacer()
