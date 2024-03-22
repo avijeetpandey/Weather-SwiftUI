@@ -45,8 +45,12 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                WeatherButtonView(title: "Change Day time", textColor: .blue, backgroundColor: .white)
-                    .padding(.bottom, 32)
+                Button {
+                    print("tapped")
+                } label: {
+                    WeatherButtonView(title: "Change Day time", textColor: .blue, backgroundColor: .white)
+                        .padding(.bottom, 32)
+                }
 
             }
         }
