@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isDarkMode: Bool = false
+    
     var body: some View {
         ZStack {
-            BackgroundView(startColor: .blue, endColor: Color("lightBlue"))
+            BackgroundView(startColor: isDarkMode ? .black :  .blue,
+                           endColor: isDarkMode ? .gray : Color("lightBlue"))
             
             VStack {
                 Text("Cupertino, CA")
@@ -46,12 +50,12 @@ struct ContentView: View {
                 Spacer()
                 
                 Button {
-                    print("tapped")
+                    isDarkMode.toggle()
                 } label: {
                     WeatherButtonView(title: "Change Day time", textColor: .blue, backgroundColor: .white)
                         .padding(.bottom, 32)
                 }
-
+                
             }
         }
     }
